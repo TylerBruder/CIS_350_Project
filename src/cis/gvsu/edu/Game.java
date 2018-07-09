@@ -20,7 +20,7 @@ public class Game extends JPanel implements Runnable, KeyListener {
 	private Thread thread;
 	
 	private boolean running;
-	private boolean right = false, left = false, up = false, down = false;
+	private boolean right = true, left = false, up = false, down = false;
 	
 	
 	private Body b;
@@ -88,8 +88,6 @@ public class Game extends JPanel implements Runnable, KeyListener {
 			if(down) yCoor++;
 			
 			ticks = 0;
-			
-			
 			
 			b = new Body(xCoor,yCoor,10);
 			snake.add(b);
@@ -163,7 +161,7 @@ public class Game extends JPanel implements Runnable, KeyListener {
 	}
 
 	@Override
-	public void keyTyped(KeyEvent e) {
+	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		if(key == KeyEvent.VK_RIGHT && !left) {
 			right = true;
@@ -185,14 +183,13 @@ public class Game extends JPanel implements Runnable, KeyListener {
 			left = false;
 			right = false;
 		}
+	}
+	
+	@Override
+	public void keyTyped(KeyEvent e) {
 		
 	}
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
