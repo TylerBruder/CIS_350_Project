@@ -1,5 +1,7 @@
 package cis.gvsu.edu;
 
+import com.sun.tools.javah.Util;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -8,7 +10,7 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class Game extends JPanel implements Runnable, KeyListener {
 	
@@ -31,7 +33,7 @@ public class Game extends JPanel implements Runnable, KeyListener {
 	
 	
 	private Random r;
-	
+	private int score = 0;
 	
 	
 	private int xCoor = 10, yCoor = 10, size = 5;
@@ -59,11 +61,19 @@ public class Game extends JPanel implements Runnable, KeyListener {
 	}
 	
 	public void start() {
-		
-		running = true;
-		thread = new Thread(this);
-		thread.start();
-		
+
+		Object[] options = {"OK"};
+		int n = JOptionPane.showOptionDialog(null,
+				"Upon clicking 'ok', your game will begin. Good luck. ","Get Ready",
+				JOptionPane.PLAIN_MESSAGE,
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				options,
+				options[0]);
+
+			running = true;
+			thread = new Thread(this);
+			thread.start();
 	}
 	public void stop() {
 		running = false;
@@ -73,6 +83,7 @@ public class Game extends JPanel implements Runnable, KeyListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 	public void tick() {
 		
@@ -111,20 +122,21 @@ public class Game extends JPanel implements Runnable, KeyListener {
 				size++;
 				foods.remove(i);
 				i++;
+				score++;
 			}
 		}
 		
 		for(int i = 0; i < snake.size(); i++) {
 			if(xCoor == snake.get(i).getxCoor() && yCoor == snake.get(i).getyCoor()) {
 				if(i != snake.size() - 1) {
-					System.out.println("Game Over");
+					System.out.println("Game Over"); //*** take this out
 					stop();
 				}
 			}
 		}
 		
 		if(xCoor < 0 || xCoor > 49 || yCoor < 0 || yCoor > 49) {
-			System.out.println("Game Over");
+			System.out.println("Game Over"); //*** take this out
 			stop();
 		}
 		
@@ -134,6 +146,7 @@ public class Game extends JPanel implements Runnable, KeyListener {
 		
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
+
 		
 		for(int i = 0; i < WIDTH/10; i++) {
 			g.drawLine(i*10, 0, i*10, HEIGHT);
@@ -147,7 +160,7 @@ public class Game extends JPanel implements Runnable, KeyListener {
 		for(int i = 0; i< foods.size(); i++) {
 			foods.get(i).draw(g);
 		}
-			
+
 		
 	}
 

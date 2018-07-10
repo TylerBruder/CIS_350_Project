@@ -1,5 +1,6 @@
 package cis.gvsu.edu;
 
+import javax.swing.*;
 import java.awt.Color;
 import java.awt.Graphics;
 
