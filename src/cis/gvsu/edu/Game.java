@@ -109,8 +109,8 @@ public class Game extends JPanel implements Runnable, KeyListener {
 			
 		}
 		if(foods.size() == 0) {
-			int xCoor = r.nextInt(49);
-			int yCoor = r.nextInt(49);
+			int xCoor = r.nextInt(48);
+			int yCoor = r.nextInt(48);
 		
 			food = new Food(xCoor, yCoor, 10);
 			foods.add(food);
@@ -135,7 +135,7 @@ public class Game extends JPanel implements Runnable, KeyListener {
 			}
 		}
 		
-		if(xCoor < 0 || xCoor > 49 || yCoor < 0 || yCoor > 49) {
+		if(xCoor < 0 || xCoor > 48 || yCoor < 0 || yCoor > 48) {
 			System.out.println("Game Over"); //*** take this out
 			stop();
 		}

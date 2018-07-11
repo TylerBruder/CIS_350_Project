@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a98b080c-0e5d-458a-a50e-9e46d35eb492" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CIS-350-Project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/cis/gvsu/edu/Body.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/cis/gvsu/edu/Body.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/cis/gvsu/edu/Food.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/cis/gvsu/edu/Food.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/cis/gvsu/edu/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/cis/gvsu/edu/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/cis/gvsu/edu/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/cis/gvsu/edu/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cis/gvsu/edu/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cis/gvsu/edu/Body.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cis/gvsu/edu/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cis/gvsu/edu/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cis/gvsu/edu/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cis/gvsu/edu/Main.java" afterDir="false" />
     </list>
@@ -26,8 +18,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cis/gvsu/edu/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="330">
+              <caret line="22" column="74" lean-forward="true" selection-start-line="22" selection-start-column="74" selection-end-line="22" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -38,8 +30,8 @@
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cis/gvsu/edu/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1384">
-              <caret line="138" column="64" selection-start-line="138" selection-start-column="64" selection-end-line="138" selection-end-column="64" />
+            <state relative-caret-position="1621">
+              <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,7 +42,7 @@
       <file leaf-file-name="Body.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cis/gvsu/edu/Body.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
+            <state relative-caret-position="144">
               <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
             </state>
           </provider>
@@ -240,7 +232,7 @@
       <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28475937" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28475937" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Capture Tool" />
@@ -264,20 +256,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/cis/gvsu/edu/Food.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cis/gvsu/edu/Body.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cis/gvsu/edu/MenuBar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -285,10 +263,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/cis/gvsu/edu/Body.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cis/gvsu/edu/Food.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/cis/gvsu/edu/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="330">
+          <caret line="22" column="74" lean-forward="true" selection-start-line="22" selection-start-column="74" selection-end-line="22" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -297,8 +289,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cis/gvsu/edu/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1384">
-          <caret line="138" column="64" selection-start-line="138" selection-start-column="64" selection-end-line="138" selection-end-column="64" />
+        <state relative-caret-position="1621">
+          <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

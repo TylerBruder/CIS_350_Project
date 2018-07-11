@@ -20,7 +20,7 @@ public class Main {
 		frame.pack();
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
-		frame.getRootPane().setBorder(BorderFactory.createMatteBorder(4,4,4,4, Color.BLUE));
+		frame.getRootPane().setBorder(BorderFactory.createMatteBorder(3,3,3,3, Color.BLUE));
 
 	}
 
