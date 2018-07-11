@@ -10,8 +10,6 @@ public class Main {
 	public Main() {
 		
 		Game gamePanel = new Game();
-
-		
 		JFrame frame = new JFrame();
 
 		frame.add(gamePanel);
@@ -21,11 +19,10 @@ public class Main {
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 		frame.getRootPane().setBorder(BorderFactory.createMatteBorder(3,3,3,3, Color.BLUE));
-
 	}
 
 	public static void main(String[] args) {
-		
+
 		new Main();
 	}
 	

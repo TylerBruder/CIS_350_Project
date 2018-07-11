@@ -14,10 +14,6 @@ public class Food {
 		height = tileSize;
 	}
 	
-	public void tick() {
-		
-	}
-	
 	public void draw(Graphics g) {
 		g.setColor(Color.RED);
 		g.fillRect(xCoor*width, yCoor*height, width, height);
