@@ -18,7 +18,6 @@ public class MainMenu implements ActionListener {
 	
 	public MainMenu()
 	{
-		//test
 		frame = new JFrame();
 		button = new JButton();
 		panel = new JPanel();
