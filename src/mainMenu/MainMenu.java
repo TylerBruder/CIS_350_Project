@@ -19,12 +19,14 @@ public class MainMenu implements ActionListener {
 	/* JFrame to hold the panel. */
 	JFrame frame;
 	
-	/* JButton to access the Pong game. */
+	/* JPanel to hold JButtons. */
+	JPanel panel;
+	
+	/* JButton to access the breakout game. */
 	JButton breakoutButton;
 	
+	/* JButton to access the the snake game. */
 	JButton snakeButton;
-	JPanel panel;
-	JLabel label = new JLabel("worked");
 	
 	public MainMenu()
 	{
