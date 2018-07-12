@@ -7,13 +7,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /***********************************************************************
  * Main menu class to organize accessing each game. Simple setup 
  * currently.
+ * 
  * @author kennemat
+ * @version Summer 2018
  **********************************************************************/
 public class MainMenu implements ActionListener {
 	/* JFrame to hold the panel. */
@@ -28,6 +29,11 @@ public class MainMenu implements ActionListener {
 	/* JButton to access the the snake game. */
 	JButton snakeButton;
 	
+	/**********************************************************************
+	 * Default constructor. Instantiates frame, panel, and button objects.
+	 * Adds action listener to buttons, then makes frame visible.
+	 *
+	 *********************************************************************/
 	public MainMenu()
 	{
 		frame = new JFrame();
@@ -49,6 +55,13 @@ public class MainMenu implements ActionListener {
 		frame.setSize(200, 120);
 		frame.setVisible(true);
 	}
+	
+	/**********************************************************************
+	 * Overridden action performed method. Checks which button was
+	 * pressed, and runs the respective game.
+	 *
+	 *@param ActionEvent e The action event that occurred.
+	 *********************************************************************/
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -59,10 +72,12 @@ public class MainMenu implements ActionListener {
 			frame.setVisible(false);
 			new cis.gvsu.edu.Main();
 		}
-		panel.add(label);
 	}
 	
-
+	/**********************************************************************
+	 * Main method. Entry point for the program. Makes a new MainMenu
+	 * object.
+	 *********************************************************************/
 	public static void main(String[] args)
 	{
 		new MainMenu();
