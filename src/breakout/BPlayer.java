@@ -12,31 +12,31 @@ import java.awt.Rectangle;
  * @version Summer 2018
  **********************************************************************/
 public class BPlayer {
-	/* Current x of the player rectangle. */
+	/** Current x of the player rectangle. */
 	private int x;
 	
-	/* The difference in the x at which to paint the player next. */
+	/** The difference in the x at which to paint the player next. */
 	private int xDiff;
 	
-	/* Current y of the player rectangle. */
+	/** Current y of the player rectangle. */
 	private int y;
 	
-	/* Key code for the left arrow key. */
+	/** Key code for the left arrow key. */
 	private final int left = 37;
 	
-	/* Key code for the right arrow key. */
+	/** Key code for the right arrow key. */
 	private final int right = 39;
 	
-	/* Width of the game window. */
-	private static final int pWidth = 805;
+	/** Width of the game window. */
+	private static final int PWIDTH = 805;
 	
-	/* Height of the game window. */
-	private static final int pHeight = 600;
+	/** Height of the game window. */
+	private static final int PHEIGHT = 600;
 	
-	/* Width of the player rectangle. */
+	/** Width of the player rectangle. */
 	private static final int WIDTH = 120;
 	
-	/* Height of the player rectangle. */
+	/** Height of the player rectangle. */
 	private static final int HEIGHT = 10;
 	
 	/**********************************************************************
@@ -44,8 +44,8 @@ public class BPlayer {
 	 * values.
 	 *********************************************************************/
 	public BPlayer() {
-		x = pWidth / 2;
-		y = pHeight - 50;
+		x = PWIDTH / 2;
+		y = PHEIGHT - 50;
 		xDiff = 0;
 	}
 	
@@ -55,12 +55,13 @@ public class BPlayer {
 	 * off the screen, then it does not move.
 	 *********************************************************************/
 	public void update() {
-        if (x > 10 && x < pWidth - WIDTH - 20)
-            x += xDiff;
-        else if (x <= 20)
-            x++;
-        else if (x >= pWidth - WIDTH - 20)
-            x--;
+        if (x > 10 && x < PWIDTH - WIDTH - 20) {
+			x += xDiff;
+		} else if (x <= 20) {
+			x++;
+		} else if (x >= PWIDTH - WIDTH - 20) {
+			x--;
+		}
     }
 	
 	/**********************************************************************
@@ -70,11 +71,12 @@ public class BPlayer {
 	 * 
 	 * @param key The key which was pressed.
 	 *********************************************************************/
-	public void pressed(int key) {
-		if (key == left)
+	public void pressed(final int key) {
+		if (key == left) {
 			xDiff = -1;
-		else if (key == right)
+		} else if (key == right) {
 			xDiff = 1;
+		}
 	}
 	
 	/**********************************************************************
@@ -83,9 +85,10 @@ public class BPlayer {
 	 * 
 	 * @param key The key which was released.
 	 *********************************************************************/
-	public void released(int key) {
-        if (key == left || key == right)
-            xDiff = 0;
+	public void released(final int key) {
+        if (key == left || key == right) {
+			xDiff = 0;
+		}
     }
 	
 	/**********************************************************************
@@ -104,7 +107,7 @@ public class BPlayer {
 	 * 
 	 * @param g The graphics field for this object.
 	 *********************************************************************/
-	public void paint(Graphics g) {
+	public void paint(final Graphics g) {
 		g.setColor(Color.white);
         g.fillRect(x, y, WIDTH, HEIGHT);
     }

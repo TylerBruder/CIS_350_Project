@@ -8,52 +8,56 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Random;
-import javax.swing.*;
 
-/*
- * 2D Snake game with features including score, colored borders, and functional movement of the snake.
- * Snake dies when it eats itself, or touches the border.
- *@Author Tyler Bruder
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+/**********************************************************************
+ * 2D Snake game with features including score, colored borders, and 
+ * functional movement of the snake. Snake dies when it eats itself, 
+ * or touches the border.
+ *@author Tyler Bruder
  *@version Summer 2018 - Release 1
  */
 public class Game extends JPanel implements Runnable, KeyListener {
 
-    /*serial version ID*/
+    /**serial version ID.*/
     private static final long serialVersionUID = 1L;
 
-    /*Width and Height of the game board*/
+    /**Width and Height of the game board.*/
     public static final int WIDTH = 500, HEIGHT = 500;
 
-    /*Game thread*/
+    /**Game thread.*/
     private Thread thread;
 
-    /*State of the game -- running or not*/
+    /**State of the game -- running or not.*/
     private boolean running;
 
-    /*State of direction that snake is moving*/
+    /**State of direction that snake is moving.*/
     private boolean right = true, left = false, up = false, down = false;
 
-    /*Instance of snake body*/
+    /**Instance of snake body.*/
     private Body b;
 
-    /*Instance of food placed*/
+    /**Instance of food placed.*/
     private Food food;
 
-    /*Array list to hold snake body length*/
+    /**Array list to hold snake body length.*/
     private ArrayList<Body> snake;
 
-    /*Array list to hold food on board*/
+    /**Array list to hold food on board.*/
     private ArrayList<Food> foods;
 
-    /*Helps randomize location of food*/
+    /**Helps randomize location of food.*/
     private Random r;
 
-    /*Initializing coordinates of snake, size of snake, and score/ticks*/
+    /**Initializing coordinates of snake, size of snake, and score/ticks.*/
     private int xCoor = 10, yCoor = 10, size = 5, score = 0, ticks = 0;
 
 
-    /*
-     *Constructor the creates the game, sets dimensions and adds aspects needed to run the game.
+    /******************************************************************
+     *Constructor the creates the game, sets dimensions 
+     *and adds aspects needed to run the game.
      */
     public Game() {
         setFocusable(true);
@@ -68,7 +72,7 @@ public class Game extends JPanel implements Runnable, KeyListener {
     }
 
 
-    /*
+    /******************************************************************
      *Starts the game.
      *Prompts user if they are ready: Upon selecting 'ok', game will start
      */
@@ -84,24 +88,28 @@ public class Game extends JPanel implements Runnable, KeyListener {
         thread.start();
     }
 
-    /*
+    /******************************************************************
      *Stops the game.
-     *Informs the user their score, and advises them to restart the application to start again
+     *Informs the user their score, and advises them to restart the 
+     *application to start again.
      */
     public void stop() {
         running = false;
-        JOptionPane.showMessageDialog(null, "Game over. Your score was: " + score + ". " +
-                "\n \n \n Game will now close. Please re-open to play again.");
+        JOptionPane.showMessageDialog(
+        		null, "Game over. Your score was: " + score + ". "
+                + "\n \n \n Game will now close. "
+                + "Please re-open to play again.");
         System.exit(0);
         try {
-            thread.join(); //'Pauses' one thread until the next is ready to execute
+            thread.join(); //'Pauses' one thread until next is ready to execute
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    /*
-     *Game tick that checks for a loss, score to be added, and all game features
+    /******************************************************************
+     *Game tick that checks for a loss, score to be added, 
+     *and all game feature.
      */
     public void tick() {
         if (snake.size() == 0) {
@@ -110,10 +118,18 @@ public class Game extends JPanel implements Runnable, KeyListener {
         }
         ticks++;
         if (ticks > 400000) { //controls game speed
-            if (right) xCoor++;
-            if (left) xCoor--;
-            if (up) yCoor--;
-            if (down) yCoor++;
+            if (right) {
+				xCoor++;
+			}
+            if (left) {
+				xCoor--;
+			}
+            if (up) {
+				yCoor--;
+			}
+            if (down) {
+				yCoor++;
+			}
 
             ticks = 0;
             b = new Body(xCoor, yCoor, 10);
@@ -131,9 +147,11 @@ public class Game extends JPanel implements Runnable, KeyListener {
             food = new Food(xCoor, yCoor, 10);
             foods.add(food);
         }
-        //Snake eats a food, increment score, remove current instance of food, replace with another food
+        //Snake eats a food, increment score, 
+        //remove current instance of food, replace with another food
         for (int i = 0; i < foods.size(); i++) {
-            if (xCoor == foods.get(i).getxCoor() && yCoor == foods.get(i).getyCoor()) {
+            if (xCoor == foods.get(i).getxCoor() 
+            		&& yCoor == foods.get(i).getyCoor()) {
                 size++;
                 foods.remove(i);
                 i++;
@@ -142,7 +160,8 @@ public class Game extends JPanel implements Runnable, KeyListener {
         }
         //Snake eats itself = loss
         for (int i = 0; i < snake.size(); i++) {
-            if (xCoor == snake.get(i).getxCoor() && yCoor == snake.get(i).getyCoor()) {
+            if (xCoor == snake.get(i).getxCoor() 
+            		&& yCoor == snake.get(i).getyCoor()) {
                 if (i != snake.size() - 1) {
                     stop();
                 }
@@ -155,11 +174,12 @@ public class Game extends JPanel implements Runnable, KeyListener {
     }
 
 
-    /*
-     *Paints all graphics for the current game: Including board, snake, and food
-     *@param g
+    /******************************************************************
+     *Paints all graphics for the current game: 
+     *Including board, snake, and food.
+     *@param g Graphics field.
      */
-    public void paint(Graphics g) {
+    public void paint(final Graphics g) {
         g.clearRect(0, 0, WIDTH, HEIGHT);
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, WIDTH, HEIGHT);
@@ -192,13 +212,14 @@ public class Game extends JPanel implements Runnable, KeyListener {
     }
 
 
-    /*
+    /******************************************************************
      *Responsible for movement of snake
-     *Controlled by arrow keys on the keyboard for now
+     *Controlled by arrow keys on the keyboard for now.
      */
     @Override
-    public void keyPressed(KeyEvent e) {
-        int key = e.getKeyCode();//gets key code from button pressed
+    public void keyPressed(final KeyEvent e) {
+    	//gets key code from button pressed
+        int key = e.getKeyCode();
         if (key == KeyEvent.VK_RIGHT && !left) {
             right = true;
             up = false;
@@ -221,18 +242,20 @@ public class Game extends JPanel implements Runnable, KeyListener {
         }
     }
 
-    /*
-     *Necessary for keyListener to be implemented
+    /******************************************************************
+     *Necessary for keyListener to be implemented.
+     *@param e KeyEvent that was sent.
      */
     @Override
-    public void keyTyped(KeyEvent e) {
+    public void keyTyped(final KeyEvent e) {
     }
 
-    /*
-     *Necessary for keyListener to be implemented
+    /******************************************************************
+     *Necessary for keyListener to be implemented.
+     *@param e KeyEvent that was sent.
      */
     @Override
-    public void keyReleased(KeyEvent e) {
+    public void keyReleased(final KeyEvent e) {
     }
 
 }

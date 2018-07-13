@@ -12,20 +12,20 @@ import java.awt.Rectangle;
  * @version Summer 2018
  **********************************************************************/
 public class BRectangles {
-	/* x coordinate of the rectangle. */
+	/** x coordinate of the rectangle. */
 	private int x;
 	
-	/* y coordinate of the rectangle. */
+	/** y coordinate of the rectangle. */
 	private int y;
 	
-	/* Color of the rectangle. Randomly calculated. */
+	/** Color of the rectangle. Randomly calculated. */
 	private Color bColor;
 	
-	/* Width of the rectangle. */
-	private static final int width = 80;
+	/** Width of the rectangle. */
+	private static final int WIDTH = 80;
 	
-	/* Height of the rectangle. */
-	private static final int height = 20;
+	/** Height of the rectangle. */
+	private static final int HEIGHT = 20;
 	
 	/**********************************************************************
 	 * Constructor for the BRectangles class. Sets the rectangles x, y, and
@@ -35,9 +35,9 @@ public class BRectangles {
 	 * @param col The column of the rectangle.
 	 * @param bColor The color of the rectangle.
 	 *********************************************************************/
-	public BRectangles(int row, int col, Color bColor) {
-		x = width * row;
-		y = height * col;
+	public BRectangles(final int row, final int col, final Color bColor) {
+		x = WIDTH * row;
+		y = HEIGHT * col;
 		this.bColor = bColor;
 	}
 	
@@ -47,9 +47,9 @@ public class BRectangles {
 	 * 
 	 * @param g The graphics field for this object.
 	 *********************************************************************/
-	public void paint(Graphics g) {
+	public void paint(final Graphics g) {
 		g.setColor(bColor);
-		g.fillRect(x, y, width, height);
+		g.fillRect(x, y, WIDTH, HEIGHT);
 	}
 	
 	/**********************************************************************
@@ -59,6 +59,6 @@ public class BRectangles {
 	 * object.
 	 *********************************************************************/
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, width, height);
+		return new Rectangle(x, y, WIDTH, HEIGHT);
 	}
 }

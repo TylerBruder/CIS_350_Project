@@ -1,17 +1,18 @@
 package cis.gvsu.edu;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
 
-/*
- *Responsible for putting the game together into something usable by an end user
- *
- *@Author Tyler Bruder
- *@Version Summer 2018
- */
+/***********************************************************************
+*Responsible for putting the game together into something usable by an 
+*end user.
+*@author Tyler Bruder
+*@version Summer 2018
+ *********************************************************************/
 public class Main {
 
-    /*
+	/******************************************************************
      *Constructor that adds the panels to main frame, and sets border up.
      */
     public Main() {
@@ -25,13 +26,16 @@ public class Main {
         frame.pack();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
-        frame.getRootPane().setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.BLUE));
+        frame.getRootPane().setBorder(
+        		BorderFactory.createMatteBorder(
+        				3, 3, 3, 3, Color.BLUE));
     }
 
-    /*
-     *Main method that starts the game
+    /**********************************************************************
+     *Main method that starts the game.
+     *@param args Args for main method.
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 
         new Main();
     }

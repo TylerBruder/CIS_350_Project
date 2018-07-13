@@ -20,32 +20,35 @@ import javax.swing.Timer;
  * @author kennemat
  * @version Summer 2018
  **********************************************************************/
-public class BPanel extends JPanel implements ActionListener, KeyListener{
-	/* Array of the BRectangles that the ball will try to hit. */
+public class BPanel extends JPanel implements ActionListener, KeyListener {
+	/**	Default serial ID. */
+	private static final long serialVersionUID = 1L;
+
+	/** Array of the BRectangles that the ball will try to hit. */
 	private BRectangles[] blocks;
 	
-	/* Array of colors for respective BRectangle array. */
+	/** Array of colors for respective BRectangle array. */
 	private Color[] blockColors;
 	
-	/* The player object. */
+	/** The player object. */
 	private BPlayer player;
 	
-	/* The ball object. */
+	/** The ball object. */
 	private BBall ball;
 	
-	/* Max number of blocks for the game. */
+	/** Max number of blocks for the game. */
 	private final int maxBlocks = 60;
 	
-	/* Float value for red colors. */
+	/** Float value for red colors. */
 	private float re;
 	
-	/* Float value for green colors. */
+	/** Float value for green colors. */
 	private float gr;
 	
-	/* Float value for blue colors. */
+	/** Float value for blue colors. */
 	private float bl;
 	
-	/* Random object to get random color values. */
+	/** Random object to get random color values. */
 	private Random rand;
 
 	/**********************************************************************
@@ -74,11 +77,13 @@ public class BPanel extends JPanel implements ActionListener, KeyListener{
 		}
 		
 		int count = 0;
-		for (int i = 0; i < maxBlocks / 6; i++)
+		for (int i = 0; i < maxBlocks / 6; i++) {
 			for (int j = 0; j < maxBlocks / 10; j++) {
-				blocks[count] = new BRectangles(i, j, blockColors[count]);
+				blocks[count] = 
+				new BRectangles(i, j, blockColors[count]);
 				count++;
 			}
+		}
 		
 		addKeyListener(this);
 		setFocusable(true);
@@ -96,12 +101,14 @@ public class BPanel extends JPanel implements ActionListener, KeyListener{
 	 * and the player.
 	 *********************************************************************/
 	@Override
-	public void paintComponent(Graphics g) {
+	public void paintComponent(final Graphics g) {
 		super.paintComponent(g);
 		
-		for (int i = 0; i < maxBlocks; i++)
-			if (blocks[i] != null)
+		for (int i = 0; i < maxBlocks; i++) {
+			if (blocks[i] != null) {
 				blocks[i].paint(g);
+			}
+		}
 		
 		player.paint(g);
 		ball.paint(g);
@@ -121,19 +128,26 @@ public class BPanel extends JPanel implements ActionListener, KeyListener{
 	 * Checks if any collisions happened with the intersect method.
 	 *********************************************************************/
 	private void checkCollision() {
-		if (ball.getBounds().intersects(player.getBounds()))
+		if (ball.getBounds().intersects(player.getBounds())) {
 			ball.switchDirection();
+		}
 		
-		for (int i = 0; i < blocks.length; i++)
-			if (blocks[i] != null)
-				if (ball.getBounds().intersects(blocks[i].getBounds())) {
+		for (int i = 0; i < blocks.length; i++) {
+			if (blocks[i] != null) {
+				if (ball.getBounds()
+						.intersects(blocks[i]
+								.getBounds())) {
 					ball.switchDirection();
 					blocks[i] = null;
 					break;
 				}
+			}
+		}
 		
 		if (checkWinner()) {
-			JOptionPane.showMessageDialog(null, "You win!", null, JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(
+					null, "You win!", 
+					null, JOptionPane.PLAIN_MESSAGE);
 			System.exit(0);
 		}
 	}
@@ -144,9 +158,11 @@ public class BPanel extends JPanel implements ActionListener, KeyListener{
 	 * @return True if won, false if not.
 	 *********************************************************************/
 	private boolean checkWinner() {
-		for (int i = 0; i < blocks.length; i++)
-			if (blocks[i] != null)
+		for (int i = 0; i < blocks.length; i++) {
+			if (blocks[i] != null) {
 				return false;
+			}
+		}
 		return true;
 	}
 	
@@ -156,7 +172,7 @@ public class BPanel extends JPanel implements ActionListener, KeyListener{
 	 * @param arg0 Key code that was pressed.
 	 *********************************************************************/
 	@Override
-	public void keyPressed(KeyEvent arg0) {
+	public void keyPressed(final KeyEvent arg0) {
 		player.pressed(arg0.getKeyCode());
 		
 	}
@@ -167,7 +183,7 @@ public class BPanel extends JPanel implements ActionListener, KeyListener{
 	 * @param arg0 Key code that was released.
 	 *********************************************************************/
 	@Override
-	public void keyReleased(KeyEvent arg0) {
+	public void keyReleased(final KeyEvent arg0) {
 		player.released(arg0.getKeyCode());
 		
 		
@@ -179,9 +195,7 @@ public class BPanel extends JPanel implements ActionListener, KeyListener{
 	 * @param arg0 Key code that was typed.
 	 *********************************************************************/
 	@Override
-	public void keyTyped(KeyEvent arg0) {
-		//player.pressed(arg0.getKeyCode());
-		;
+	public void keyTyped(final KeyEvent arg0) {
 	}
 
 	/**********************************************************************
@@ -191,7 +205,7 @@ public class BPanel extends JPanel implements ActionListener, KeyListener{
 	 * @Param arg0 The action event that occurred, if any.
 	 *********************************************************************/
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(final ActionEvent arg0) {
 		update();
 		repaint();
 	}

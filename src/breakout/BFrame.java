@@ -12,6 +12,9 @@ import javax.swing.JFrame;
  **********************************************************************/
 public class BFrame extends JFrame {
 
+	/**	Default serial ID. */
+	private static final long serialVersionUID = 1L;
+
 	/**********************************************************************
 	 * Constructor for the class. Creates a new panel, adds the panel to
 	 * the frame, sets the default close operation and size, then makes
