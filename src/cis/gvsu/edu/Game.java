@@ -78,7 +78,7 @@ public class Game extends JPanel implements Runnable, KeyListener {
      */
     public void start() {
         Object[] options = {"OK"};
-        int n = JOptionPane.showOptionDialog(null,
+        JOptionPane.showOptionDialog(null,
                 "Click OK to start. Good luck. ", "Get Ready",
                 JOptionPane.PLAIN_MESSAGE,
                 JOptionPane.QUESTION_MESSAGE, null, options, options[0]);

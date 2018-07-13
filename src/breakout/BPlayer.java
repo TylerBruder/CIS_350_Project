@@ -22,10 +22,10 @@ public class BPlayer {
 	private int y;
 	
 	/** Key code for the left arrow key. */
-	private final int left = 37;
+	private static final int LEFT = 37;
 	
 	/** Key code for the right arrow key. */
-	private final int right = 39;
+	private static final int RIGHT = 39;
 	
 	/** Width of the game window. */
 	private static final int PWIDTH = 805;
@@ -72,9 +72,9 @@ public class BPlayer {
 	 * @param key The key which was pressed.
 	 *********************************************************************/
 	public void pressed(final int key) {
-		if (key == left) {
+		if (key == LEFT) {
 			xDiff = -1;
-		} else if (key == right) {
+		} else if (key == RIGHT) {
 			xDiff = 1;
 		}
 	}
@@ -86,7 +86,7 @@ public class BPlayer {
 	 * @param key The key which was released.
 	 *********************************************************************/
 	public void released(final int key) {
-        if (key == left || key == right) {
+        if (key == LEFT || key == RIGHT) {
 			xDiff = 0;
 		}
     }

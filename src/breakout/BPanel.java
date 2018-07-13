@@ -37,7 +37,7 @@ public class BPanel extends JPanel implements ActionListener, KeyListener {
 	private BBall ball;
 	
 	/** Max number of blocks for the game. */
-	private final int maxBlocks = 60;
+	private static final int MAXBLOCKS = 60;
 	
 	/** Float value for red colors. */
 	private float re;
@@ -58,11 +58,11 @@ public class BPanel extends JPanel implements ActionListener, KeyListener {
 	 * a timer.
 	 *********************************************************************/
 	public BPanel() {
-		blocks = new BRectangles[maxBlocks];
-		blockColors = new Color[maxBlocks];
+		blocks = new BRectangles[MAXBLOCKS];
+		blockColors = new Color[MAXBLOCKS];
 		rand = new Random();
 		
-		for (int i = 0; i < maxBlocks; i++) {
+		for (int i = 0; i < MAXBLOCKS; i++) {
 			re = rand.nextFloat();
 			gr = rand.nextFloat();
 			bl = rand.nextFloat();
@@ -77,8 +77,8 @@ public class BPanel extends JPanel implements ActionListener, KeyListener {
 		}
 		
 		int count = 0;
-		for (int i = 0; i < maxBlocks / 6; i++) {
-			for (int j = 0; j < maxBlocks / 10; j++) {
+		for (int i = 0; i < MAXBLOCKS / 6; i++) {
+			for (int j = 0; j < MAXBLOCKS / 10; j++) {
 				blocks[count] = 
 				new BRectangles(i, j, blockColors[count]);
 				count++;
@@ -104,7 +104,7 @@ public class BPanel extends JPanel implements ActionListener, KeyListener {
 	public void paintComponent(final Graphics g) {
 		super.paintComponent(g);
 		
-		for (int i = 0; i < maxBlocks; i++) {
+		for (int i = 0; i < MAXBLOCKS; i++) {
 			if (blocks[i] != null) {
 				blocks[i].paint(g);
 			}
