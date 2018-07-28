@@ -39,7 +39,7 @@ public class DinoSpeck {
 	
 	public void decX()
 	{
-		xPos-=4;
+		xPos-=2;
 	}
 	
 	public void setY(int y)

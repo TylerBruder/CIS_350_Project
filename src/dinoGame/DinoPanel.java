@@ -71,17 +71,17 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 	
 	@Override
 	public void paintComponent(final Graphics g) {
-			
+		super.paintComponent(g);
 		if (switchLegs > 9) {
-			super.paintComponent(g);
+//			super.paintComponent(g);
 			player.paint(g, true);
 			switchLegs = -1;
-			
-			for (DinoSpeck speck : specks)
-			{
-				speck.decX();
-				speck.paint(g);
-			}
+		}
+		
+		for (DinoSpeck speck : specks)
+		{
+			speck.decX();
+			speck.paint(g);
 		}
 		
 		if (obstacleCounter > 300)
@@ -105,19 +105,19 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 				bigCactus.decX();
 				bigCactus.paint(g);
 				
-				if (bigCactus.getX() < 0)
+				if (bigCactus.getX() < -10)
 					obstacleDrawn = false;
 			} else if (obstacleRandom == 2) {
 				smallCactus.decX();
 				smallCactus.paint(g);
 				
-				if (smallCactus.getX() < 0)
+				if (smallCactus.getX() < -10)
 					obstacleDrawn = false;
 			} else if (obstacleRandom == 3) {
 				manyCactus.decX();
 				manyCactus.paint(g);
 				
-				if (manyCactus.getX() < 0)
+				if (manyCactus.getX() < -10)
 					obstacleDrawn = false;
 			}
 			

@@ -38,7 +38,7 @@ public class DinoCactusBig implements ImageObserver {
 	
 	public void decX()
 	{
-		xPos-=4;
+		xPos-=2;
 	}
 	
 	public int getX()

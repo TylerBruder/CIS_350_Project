@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 public class DinoCactusSmall implements ImageObserver {
 	private int xPos = 600;
-	private int yPos = 245;
+	private int yPos = 275;
 	private static final int WIDTH = 33;
 	private static final int HEIGHT  = 67;
 	
@@ -19,7 +19,7 @@ public class DinoCactusSmall implements ImageObserver {
 	public DinoCactusSmall()
 	{
 		try {
-			smallCactusImg = ImageIO.read(new File("sprites/cactusSmallMany0000.png"));
+			smallCactusImg = ImageIO.read(new File("sprites/cactusSmall0000.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -37,7 +37,7 @@ public class DinoCactusSmall implements ImageObserver {
 	
 	public void decX()
 	{
-		xPos-=4;
+		xPos-=2;
 	}
 	
 	public int getX()

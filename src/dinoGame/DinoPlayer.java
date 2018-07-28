@@ -63,16 +63,12 @@ public class DinoPlayer implements ActionListener, ImageObserver {
     		return;
     	}
     	if (switchLegs)
-    	{
-    		//System.out.println("switching legs");
-	    	if (currPic)
-	    		g.drawImage(playerImage1, xPos, yPos, 80, 93, this);
-	    	else
-	    		g.drawImage(playerImage2, xPos, yPos, 80, 93, this);
-	    	currPic = !currPic;
-    	}
-    	//g.setColor(Color.black);
-    	 //g.fillRect(100, 100, 100, 100);
+    		currPic = !currPic;
+	    	
+    	if (currPic)
+	    	g.drawImage(playerImage1, xPos, yPos, 80, 93, this);
+	    else
+	    	g.drawImage(playerImage2, xPos, yPos, 80, 93, this);
     }
 
 

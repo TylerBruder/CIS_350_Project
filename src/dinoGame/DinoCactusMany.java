@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 public class DinoCactusMany implements ImageObserver {
 	
 	private int xPos = 600;
-	private int yPos = 245;
+	private int yPos = 275;
 	private static final int WIDTH = 100;
 	private static final int HEIGHT  = 67;
 	
@@ -38,7 +38,7 @@ public class DinoCactusMany implements ImageObserver {
 	
 	public void decX()
 	{
-		xPos-=4;
+		xPos-=2;
 	}
 	
 	public int getX()
