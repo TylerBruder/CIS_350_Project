@@ -55,7 +55,7 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 		
 		addKeyListener(this);
 		setFocusable(true);
-		Timer timer = new Timer(1000/FRAMERATE, this);
+		Timer timer = new Timer(500/FRAMERATE, this);
 		timer.start();
 		
 		specks = new DinoSpeck[10];
@@ -71,6 +71,7 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 	
 	@Override
 	public void paintComponent(final Graphics g) {
+			
 		if (switchLegs > 9) {
 			super.paintComponent(g);
 			player.paint(g, true);

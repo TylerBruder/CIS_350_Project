@@ -29,7 +29,7 @@ public class DinoSpeck {
 	public void paint(final Graphics g) {
 		if (xPos < -5)
 		{
-			yPos = DinoPanel.getNewY(UPPERX, LOWERX);
+			yPos = DinoPanel.getNewY(UPPERY, LOWERY);
 			xPos = 610;
 			width = DinoPanel.getNewWidth(UPPERW, LOWERW);
 			height = DinoPanel.getNewHeight(UPPERH, LOWERH);
@@ -39,7 +39,7 @@ public class DinoSpeck {
 	
 	public void decX()
 	{
-		xPos-=2;
+		xPos-=4;
 	}
 	
 	public void setY(int y)
