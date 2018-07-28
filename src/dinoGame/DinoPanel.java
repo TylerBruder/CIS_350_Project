@@ -22,47 +22,56 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 	
 	private int switchLegs = -1;
 	
-
+	private final static int UPPERSPECKX = 610;
+	private final static int LOWERSPECKX = 10;
+	private final static int UPPERSPECKY = 390;
+	private final static int LOWERSPECKY = 350;
+	private final static int LOWERSPECKW = 4;
+	private final static int UPPERSPECKW = 8;
+	private final static int LOWERSPECKH = 1;
+	private final static int UPPERSPECKH = 2;
+	private final static int MAXOBSTACLES = 3;
+	private final static int MINOBSTACLES = 1;
 	
-	private static Random randX;
-	private static Random randY;
-	private static Random randWidth;
-	private static Random randHeight;
+	private static Random rand;
 	private DinoSpeck[] specks;
 	
-	private final static int UPPERX = 610;
-	private final static int LOWERX = 10;
-	private final static int UPPERY = 390;
-	private final static int LOWERY = 350;
-	private final static int LOWERW = 4;
-	private final static int UPPERW = 8;
-	private final static int LOWERH = 1;
-	private final static int UPPERH = 2;
-	
+	private int obstacleCounter = 0;
+	private int obstacleRandom = 0;
+	private boolean obstacleDrawn = false;
+	private DinoCactusBig bigCactus;
+	private DinoCactusSmall smallCactus;
+	private DinoCactusMany manyCactus;
 	
 	public DinoPanel() {
 		super.setBackground(Color.white);
 		player = new DinoPlayer();
 		ground = new DinoGround();
+		
+		bigCactus = new DinoCactusBig();
+		smallCactus = new DinoCactusSmall();
+		manyCactus = new DinoCactusMany();
+		
+		
 		addKeyListener(this);
 		setFocusable(true);
 		Timer timer = new Timer(1000/FRAMERATE, this);
 		timer.start();
 		
 		specks = new DinoSpeck[10];
-		randX = new Random();
-		randY = new Random();
-		randWidth = new Random();
-		randHeight = new Random();
+		rand = new Random();
 		for (int i = 0; i < 10; i++)
 		{
-			specks[i] = new DinoSpeck(getNewX(), getNewY(), getNewWidth(), getNewHeight());
+			specks[i] = new DinoSpeck(getNewX(UPPERSPECKX, LOWERSPECKX), 
+					getNewY(UPPERSPECKY, LOWERSPECKY), 
+					getNewWidth(UPPERSPECKW, LOWERSPECKW), 
+					getNewHeight(UPPERSPECKH, LOWERSPECKH));
 		}
 	}
 	
 	@Override
 	public void paintComponent(final Graphics g) {
-		if (switchLegs > 5) {
+		if (switchLegs > 9) {
 			super.paintComponent(g);
 			player.paint(g, true);
 			switchLegs = -1;
@@ -73,12 +82,52 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 				speck.paint(g);
 			}
 		}
+		
+		if (obstacleCounter > 300)
+		{
+			obstacleCounter = 0;
+			obstacleRandom = rand.nextInt(MAXOBSTACLES) + 1;
+			obstacleDrawn = true;
+			
+			if (obstacleRandom == 1)
+				bigCactus.resetX();
+			else if (obstacleRandom == 2)
+				smallCactus.resetX();
+			else if (obstacleRandom == 3)
+				manyCactus.resetX();
+		}
+		
+		if (obstacleDrawn)
+		{
+			if (obstacleRandom == 1)
+			{
+				bigCactus.decX();
+				bigCactus.paint(g);
+				
+				if (bigCactus.getX() < 0)
+					obstacleDrawn = false;
+			} else if (obstacleRandom == 2) {
+				smallCactus.decX();
+				smallCactus.paint(g);
+				
+				if (smallCactus.getX() < 0)
+					obstacleDrawn = false;
+			} else if (obstacleRandom == 3) {
+				manyCactus.decX();
+				manyCactus.paint(g);
+				
+				if (manyCactus.getX() < 0)
+					obstacleDrawn = false;
+			}
+			
+		}
+		
 		ground.paint(g);
 		player.paint(g, false);
 		
-		
-		
 		switchLegs += 1;
+		if (!obstacleDrawn)
+			obstacleCounter++;
 	}
 
 	@Override
@@ -105,25 +154,23 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 	}
 	
 	
-	public static int getNewX()
+	public static int getNewX(int UPPERX, int LOWERX)
 	{
-		return randX.nextInt(UPPERX-LOWERX) + LOWERX;
+		return rand.nextInt(UPPERX-LOWERX) + LOWERX;
 	}
 	
-	public static int getNewY()
+	public static int getNewY(int UPPERY, int LOWERY)
 	{
-		return randY.nextInt(UPPERY-LOWERY) + LOWERY;
+		return rand.nextInt(UPPERY-LOWERY) + LOWERY;
 	}
 	
-	public static int getNewWidth()
+	public static int getNewWidth(int UPPERW, int LOWERW)
 	{
-		return randWidth.nextInt(UPPERW-LOWERW) + LOWERW;
+		return rand.nextInt(UPPERW-LOWERW) + LOWERW;
 	}
 	
-	public static int getNewHeight()
+	public static int getNewHeight(int UPPERH, int LOWERH)
 	{
-		return randWidth.nextInt(UPPERH-LOWERH) + LOWERH;
+		return rand.nextInt(UPPERH-LOWERH) + LOWERH;
 	}
-	
-	
 }

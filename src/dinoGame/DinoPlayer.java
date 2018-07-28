@@ -18,6 +18,7 @@ public class DinoPlayer implements ActionListener, ImageObserver {
 	/** Image to use to paint the dino. */
 	private BufferedImage playerImage1;
 	private BufferedImage playerImage2;
+	private BufferedImage playerJumping;
 	
 	//private static final int 
 	
@@ -28,14 +29,15 @@ public class DinoPlayer implements ActionListener, ImageObserver {
 	private int yPos = 250;
 	private int xPos = 0;
 	
-	private int jumpSpeed = 6;
+	private int jumpSpeed = 15;
 	private static final int GRAVITY = 1;
 	private boolean jumping = false;
 	
 	public DinoPlayer() {
 		try {
-			playerImage1 = ImageIO.read(new File("dinorun0000.png"));
-			playerImage2 = ImageIO.read(new File("dinorun0001.png"));
+			playerImage1 = ImageIO.read(new File("sprites/dinorun0000.png"));
+			playerImage2 = ImageIO.read(new File("sprites/dinorun0001.png"));
+			playerJumping = ImageIO.read(new File("sprites/dinoJump0000.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -55,6 +57,11 @@ public class DinoPlayer implements ActionListener, ImageObserver {
 	
 	
     public void paint(final Graphics g, boolean switchLegs) {
+    	if (jumping)
+    	{
+    		g.drawImage(playerJumping, xPos, yPos, 80, 93, this);
+    		return;
+    	}
     	if (switchLegs)
     	{
     		//System.out.println("switching legs");
@@ -85,7 +92,7 @@ public class DinoPlayer implements ActionListener, ImageObserver {
 		{
 			yPos = 250;
 			jumping = false;
-			jumpSpeed = 6;
+			jumpSpeed = 15;
 		}
 	}
 }
