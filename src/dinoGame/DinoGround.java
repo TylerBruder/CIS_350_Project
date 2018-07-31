@@ -1,14 +1,26 @@
 package dinoGame;
 
 import java.awt.Graphics;
-import java.util.Random;
 
+/***********************************************************************
+ * DinoGround class. This is just a line across the frame to indicate 
+ * the ground.
+ * 
+ * @author kennemat
+ * @version Summer 2018.
+ **********************************************************************/
 public class DinoGround {
-	private int yPos = 250;
-	private int xPos = 0;
 	
-	public void paint(final Graphics g) {
-		g.drawLine(0, 343, 600, 343);
+	/**********************************************************************
+	 * Paint method for this class. Draws the ground across the frame at a
+	 * given y.
+	 * 
+	 * @param g The graphics variable for the paint method.
+	 * @param int maxX The "length" of the ground across the frame.
+	 * @param yPos The y position of the ground.
+	 *********************************************************************/
+	public void paint(final Graphics g, int maxX, int yPos) {
+		g.drawLine(0, yPos, maxX, yPos);
 	}
 
 }
