@@ -34,6 +34,7 @@ public class DinoFrame extends JFrame {
 		getContentPane().add(panel);
 		setDefaultCloseOperation(JDialog.EXIT_ON_CLOSE);
 		setSize(DWIDTH, DHEIGHT);
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	

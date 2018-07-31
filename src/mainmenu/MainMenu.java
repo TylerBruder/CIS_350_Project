@@ -88,6 +88,7 @@ public class MainMenu implements ActionListener {
 		
 		frame.getContentPane().add(panel);
 		frame.setDefaultCloseOperation(JDialog.EXIT_ON_CLOSE);
+		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setSize(600, 255);
 		frame.setVisible(true);

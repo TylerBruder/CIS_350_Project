@@ -12,6 +12,7 @@ import java.awt.event.KeyListener;
 import java.util.Random;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -196,6 +197,8 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 				for (DinoSpeck speck : specks)
 					speck.paint(g);
 				timer.stop();
+				JOptionPane.showMessageDialog(null, "You lose. \n Score: " + score);
+				System.exit(0);
 				return;
 			}
 		}
