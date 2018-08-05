@@ -104,9 +104,9 @@ public class MainMenu implements ActionListener {
 		if (e.getSource() == breakoutButton) {
 			new breakout.BFrame();
 		} else if (e.getSource() == snakeButton) {
-			new cis.gvsu.edu.Main();
+			new cis.gvsu.edu.SnakeFrame();
 		} else if (e.getSource() == dinoButton) {
-			new dinoGame.DinoFrame();
+			new dinogame.DinoFrame();
 		} else if (e.getSource() == exitButton) {
 			System.exit(0);
 		}

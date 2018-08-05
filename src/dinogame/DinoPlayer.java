@@ -1,4 +1,4 @@
-package dinoGame;
+package dinogame;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -42,10 +42,10 @@ public class DinoPlayer implements ActionListener, ImageObserver {
 	private BufferedImage playerDead;
 	
 	/** Final value for the height of the running and jumping sprites. */
-	private final static int HEIGHT = 93;
+	private static final int HEIGHT = 93;
 	
 	/** Final value for the width of the running and jumping sprites. */
-	private final static int WIDTH = 80;
+	private static final int WIDTH = 80;
 	
 	/** Final value for the width of the ducking sprites. */
 	private static final int DUCKHEIGHT = 57;
@@ -68,11 +68,12 @@ public class DinoPlayer implements ActionListener, ImageObserver {
 	/** Default y value for the dino, at ground level. */
 	private static final int DEFAULTY = 447;
 	
-	/** Default jump speed for the dino, immediately when leaving the ground. */
+	/** Default jump speed for the dino, when leaving the ground. */
 	private static final int DEFAULTJUMP = 28;
 	
 	/** Default y position for the ducking sprite. */
-	private static final int DEFAULTDUCKY = DEFAULTY + (HEIGHT - DUCKHEIGHT);
+	private static final int DEFAULTDUCKY 
+		= DEFAULTY + (HEIGHT - DUCKHEIGHT);
 	
 	/** Current x position of the dino. */
 	private int yPos;
@@ -101,18 +102,30 @@ public class DinoPlayer implements ActionListener, ImageObserver {
 	 *********************************************************************/
 	public DinoPlayer() {
 		try {
-			playerImage1 = ImageIO.read(new File("sprites/dinorun0000.png"));
-			playerImage2 = ImageIO.read(new File("sprites/dinorun0001.png"));
-			playerJumping = ImageIO.read(new File("sprites/dinoJump0000.png"));
-			playerDucking1 = ImageIO.read(new File("sprites/dinoduck0000.png"));
-			playerDucking2 = ImageIO.read(new File("sprites/dinoduck0001.png"));
-			playerDead = ImageIO.read(new File("sprites/dinoDead0000.png"));
+			playerImage1 = 
+			ImageIO.read(new File("sprites/dinorun0000.png"));
+			
+			playerImage2 = 
+			ImageIO.read(new File("sprites/dinorun0001.png"));
+			
+			playerJumping = 
+			ImageIO.read(new File("sprites/dinoJump0000.png"));
+			
+			playerDucking1 = 
+			ImageIO.read(new File("sprites/dinoduck0000.png"));
+			
+			playerDucking2 = 
+			ImageIO.read(new File("sprites/dinoduck0001.png"));
+			
+			playerDead = 
+			ImageIO.read(new File("sprites/dinoDead0000.png"));
 		} catch (IOException e) {
 			Object[] options = {"OK"};
 	        JOptionPane.showOptionDialog(null,
 	                "Error loading image files. ", "Error",
 	                JOptionPane.PLAIN_MESSAGE,
-	                JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+	                JOptionPane.QUESTION_MESSAGE, 
+	                null, options, options[0]);
 		}
 		
 		yPos = DEFAULTY;
@@ -134,8 +147,9 @@ public class DinoPlayer implements ActionListener, ImageObserver {
 	public void pressed(final int key) {
 		if ((key == KEY_UP || key == KEY_SPACE) && !jumping) {
 			jumping = true;
-		} else if (key == KEY_DOWN)
-			ducking = true;			
+		} else if (key == KEY_DOWN) {
+			ducking = true;
+		}			
 	}
 	
 	/**********************************************************************
@@ -145,50 +159,79 @@ public class DinoPlayer implements ActionListener, ImageObserver {
 	 * @param key The key that was released.
 	 *********************************************************************/
 	public void released(final int key) {
-		if (key == KEY_DOWN)
+		if (key == KEY_DOWN) {
 			ducking = false;
+		}
 	}
 	
 	/**********************************************************************
 	 * Repaints the player object. The logic for this is as follows:
-	 * 	Checks if the player died. If so, paint dead player image, return.
-	 * 	Checks if player is jumping. If so, paint player jumping, return.
-	 * 	Checks if boolean to determine leg swap should switch.
-	 * 	Checks if player is ducking. If so, duck according to currPic bool,
+	 * Checks if the player died. If so, paint dead player image, return.
+	 * Checks if player is jumping. If so, paint player jumping, return.
+	 * Checks if boolean to determine leg swap should switch.
+	 * Checks if player is ducking. If so, duck according to currPic bool,
 	 * 		return.
 	 * 	Lastly, if still in the method, just paint the dino according to
 	 * 		the currPic bool.
 	 * 
-	 * @param key The key that was released.
+	 * @param g The graphics passed.
+	 * @param switchLegs determines if legs should be switched.
+	 * @param dead Determines if the player is dead.
 	 *********************************************************************/
-    public void paint(final Graphics g, boolean switchLegs, boolean dead) {
-    	if (dead)
-    	{
+    public void paint(
+    	final Graphics g, final boolean switchLegs, final boolean dead) {
+    	
+    	if (dead) {
     		g.drawImage(playerDead, xPos, yPos + 1, WIDTH, HEIGHT, this);
     		return;
     	}
     	
-    	if (jumping)
-    	{
+    	if (jumping) {
     		g.drawImage(playerJumping, xPos, yPos, WIDTH, HEIGHT, this);
     		return;
     	}
-    	if (switchLegs)
+    	if (switchLegs) {
     		currPic = !currPic;
+    	}
     	
-    	if (ducking)
-    	{
-    		if (currPic)
-    	    	g.drawImage(playerDucking1, xPos, DEFAULTDUCKY, DUCKWIDTH, DUCKHEIGHT, this);
-    	    else
-    	    	g.drawImage(playerDucking2, xPos, DEFAULTDUCKY, DUCKWIDTH, DUCKHEIGHT, this);
+    	if (ducking) {
+    		if (currPic) {
+				g.drawImage(
+    	    		playerDucking1, 
+    	    		xPos, 
+    	    		DEFAULTDUCKY,
+    	    		DUCKWIDTH, 
+    	    		DUCKHEIGHT, 
+    	    		this);
+			} else {
+				g.drawImage(
+						playerDucking2, 
+						xPos, 
+						DEFAULTDUCKY, 
+						DUCKWIDTH, 
+						DUCKHEIGHT, 
+						this);
+			}
     		return;
     	}
 	    	
-    	if (currPic)
-	    	g.drawImage(playerImage1, xPos, yPos, WIDTH, HEIGHT, this);
-	    else
-	    	g.drawImage(playerImage2, xPos, yPos, WIDTH, HEIGHT, this);
+    	if (currPic) {
+			g.drawImage(
+					playerImage1, 
+					xPos, 
+					yPos, 
+					WIDTH, 
+					HEIGHT, 
+					this);
+		} else {
+			g.drawImage(
+					playerImage2, 
+					xPos, 
+					yPos, 
+					WIDTH, 
+					HEIGHT, 
+					this);
+		}
     }
 
     /**********************************************************************
@@ -202,8 +245,13 @@ public class DinoPlayer implements ActionListener, ImageObserver {
 	 * @param height The height of the image.
 	 * @return True if further updates needed, false if not,
 	 *********************************************************************/
-	@Override
-	public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) {
+    @Override
+	public boolean imageUpdate(final Image img, 
+				final int infoflags, 
+				final int x, 
+				final int y, 
+				final int width, 
+				final int height) {
 		return false;
 	}
 
@@ -217,14 +265,11 @@ public class DinoPlayer implements ActionListener, ImageObserver {
 	 * @param e The action event that occured.
 	 *********************************************************************/
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (jumping && (yPos - (jumpSpeed - GRAVITY)) < DEFAULTY)
-		{
+	public void actionPerformed(final ActionEvent e) {
+		if (jumping && (yPos - (jumpSpeed - GRAVITY)) < DEFAULTY) {
 			jumpSpeed -= GRAVITY;
 			yPos -= jumpSpeed;
-		}
-		else
-		{
+		} else {
 			yPos = DEFAULTY;
 			jumping = false;
 			jumpSpeed = DEFAULTJUMP;
@@ -239,8 +284,9 @@ public class DinoPlayer implements ActionListener, ImageObserver {
 	 * @return The current y position of the dino.
 	 *********************************************************************/
 	public int getY() {
-		if (ducking)
+		if (ducking) {
 			return yPos + (DUCKHEIGHT / 2);
+		}
 		return yPos;
 	}
 	
@@ -250,10 +296,10 @@ public class DinoPlayer implements ActionListener, ImageObserver {
 	 * 
 	 * @return Width of the dino.
 	 *********************************************************************/
-	public int getWidth()
-	{
-		if (ducking)
+	public int getWidth() {
+		if (ducking) {
 			return DUCKWIDTH;
+		}
 		return WIDTH;
 	}
 	
@@ -263,10 +309,10 @@ public class DinoPlayer implements ActionListener, ImageObserver {
 	 * 
 	 * @return Width of the dino.
 	 *********************************************************************/
-	public int getHeight()
-	{
-		if (ducking)
+	public int getHeight() {
+		if (ducking) {
 			return DUCKHEIGHT;
+		}
 		return HEIGHT;
 	}
 }

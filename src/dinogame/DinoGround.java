@@ -1,4 +1,4 @@
-package dinoGame;
+package dinogame;
 
 import java.awt.Graphics;
 
@@ -16,10 +16,10 @@ public class DinoGround {
 	 * given y.
 	 * 
 	 * @param g The graphics variable for the paint method.
-	 * @param int maxX The "length" of the ground across the frame.
+	 * @param maxX The "length" of the ground across the frame.
 	 * @param yPos The y position of the ground.
 	 *********************************************************************/
-	public void paint(final Graphics g, int maxX, int yPos) {
+	public void paint(final Graphics g, final int maxX, final int yPos) {
 		g.drawLine(0, yPos, maxX, yPos);
 	}
 

@@ -1,4 +1,4 @@
-package dinoGame;
+package dinogame;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -41,7 +41,7 @@ public class DinoBerd implements ImageObserver, DinoObstacle {
 	private int speedFactor = 0;
 	
 	/** Counter to see if the images should be "flipped". */
-	private int switchWingsCounter= 0;
+	private int switchWingsCounter = 0;
 	
 	/** Boolean to determine which image is currently in use. */
 	private boolean currWings;
@@ -64,7 +64,8 @@ public class DinoBerd implements ImageObserver, DinoObstacle {
 	        JOptionPane.showOptionDialog(null,
 	                "Error loading image files. ", "Error",
 	                JOptionPane.PLAIN_MESSAGE,
-	                JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+	                JOptionPane.QUESTION_MESSAGE, 
+	                null, options, options[0]);
 		}
 		
 		xPos = DEFAULTX;
@@ -78,16 +79,16 @@ public class DinoBerd implements ImageObserver, DinoObstacle {
 	 * @param g The graphics variable for the paint method.
 	 *********************************************************************/
 	public void paint(final Graphics g) {	
-		switchWingsCounter+=1;
-		if (switchWingsCounter > 90)
-		{
+		switchWingsCounter += 1;
+		if (switchWingsCounter > 90) {
 			currWings = !currWings;
 			switchWingsCounter = 0;
 		}
-		if (currWings)
+		if (currWings) {
 			g.drawImage(dinoBerd1, xPos, yPos, WIDTH, HEIGHT, this);
-		 else
+		} else {
 			g.drawImage(dinoBerd2, xPos, yPos, WIDTH, HEIGHT, this);
+		}
 	}
 	
 	/**********************************************************************
@@ -102,7 +103,12 @@ public class DinoBerd implements ImageObserver, DinoObstacle {
 	 * @return True if further updates needed, false if not,
 	 *********************************************************************/
 	@Override
-	public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) {
+	public boolean imageUpdate(final Image img, 
+				final int infoflags, 
+				final int x, 
+				final int y, 
+				final int width, 
+				final int height) {
 		return false;
 	}
 	
@@ -111,9 +117,8 @@ public class DinoBerd implements ImageObserver, DinoObstacle {
 	 * panel by a factor of 3 + speedFactor.
 	 *********************************************************************/
 	@Override
-	public void decX()
-	{
-		xPos-=(3 + speedFactor);
+	public void decX() {
+		xPos -= (3 + speedFactor);
 	}
 	
 	/**********************************************************************
@@ -123,8 +128,7 @@ public class DinoBerd implements ImageObserver, DinoObstacle {
 	 * @return Current x position.
 	 *********************************************************************/
 	@Override
-	public int getX()
-	{
+	public int getX() {
 		return xPos;
 	}
 	
@@ -164,8 +168,7 @@ public class DinoBerd implements ImageObserver, DinoObstacle {
 	 * so the obstacle can move across the screen.
 	 *********************************************************************/
 	@Override
-	public void resetX()
-	{
+	public void resetX() {
 		xPos = DEFAULTX;
 	}
 	

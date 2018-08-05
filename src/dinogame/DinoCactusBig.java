@@ -1,4 +1,4 @@
-package dinoGame;
+package dinogame;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -11,25 +11,26 @@ import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 /***********************************************************************
- * DinoCactusSmall class for the small cactus obstacle. Implements the 
- * DinoObstacle interface. Cactus moves at constant speed across game.
+ * DinoCactusBig for the big cactus obstacle. Implements the
+ * DinoObstacle interface. Cactus moves at constant speed across the 
+ * screen.
  * 
- * 
- * @author kennemat
+ * @author mkennedy
  * @version Summer 2018.
  **********************************************************************/
-public class DinoCactusSmall implements ImageObserver, DinoObstacle {
+public class DinoCactusBig implements ImageObserver, DinoObstacle {
+	
 	/** Default x position for the obstacle. */
 	private static final int DEFAULTX = 930;
 	
 	/** Default y position for the obstacle. */
-	private static final int DEFAULTY = 484;
+	private static final int DEFAULTY = 457;
 	
 	/** Width of the obstacle sprite. */
-	private static final int WIDTH = 28;
+	private static final int WIDTH = 42;
 	
 	/** Height of the obstacle sprite. */
-	private static final int HEIGHT  = 56;
+	private static final int HEIGHT  = 83;
 	
 	/** Actual x position variable. */
 	private int xPos;
@@ -41,23 +42,24 @@ public class DinoCactusSmall implements ImageObserver, DinoObstacle {
 	private int speedFactor = 0;
 
 	/** BufferedImage variable for the obstacle sprite. */
-	private BufferedImage smallCactusImg;
+	private BufferedImage bigCactusImg;
 	
 	/**********************************************************************
-	 * Constructor for the DinoCactusSmall class. Initializes variables.
+	 * Constructor for the DinoCactusBig class. Initializes variables.
 	 *********************************************************************/
-	public DinoCactusSmall()
-	{
+	public DinoCactusBig() {
 		try {
-			smallCactusImg = ImageIO.read(new File("sprites/cactusSmall0000.png"));
+			bigCactusImg = ImageIO.read(
+					new File("sprites/cactusBig0000.png"));
 		} catch (IOException e) {
 			Object[] options = {"OK"};
 	        JOptionPane.showOptionDialog(null,
 	                "Error loading image files. ", "Error",
 	                JOptionPane.PLAIN_MESSAGE,
-	                JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+	                JOptionPane.QUESTION_MESSAGE, 
+	                null, options, options[0]);
 		}
-
+		
 		xPos = DEFAULTX;
 		yPos = DEFAULTY;
 	}
@@ -69,7 +71,7 @@ public class DinoCactusSmall implements ImageObserver, DinoObstacle {
 	 * @param g The graphics variable for the paint method.
 	 *********************************************************************/
 	public void paint(final Graphics g) {
-		g.drawImage(smallCactusImg, xPos, yPos, WIDTH, HEIGHT, this);
+		g.drawImage(bigCactusImg, xPos, yPos, WIDTH, HEIGHT, this);
 	}
 
 	/**********************************************************************
@@ -84,7 +86,12 @@ public class DinoCactusSmall implements ImageObserver, DinoObstacle {
 	 * @return True if further updates needed, false if not,
 	 *********************************************************************/
 	@Override
-	public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) {
+	public boolean imageUpdate(final Image img, 
+				final int infoflags, 
+				final int x, 
+				final int y, 
+				final int width, 
+				final int height) {
 		return false;
 	}
 	
@@ -93,9 +100,8 @@ public class DinoCactusSmall implements ImageObserver, DinoObstacle {
 	 * panel by a factor of 3 + speedFactor.
 	 *********************************************************************/
 	@Override
-	public void decX()
-	{
-		xPos-=(3 + speedFactor);
+	public void decX() {
+		xPos -= (3 + speedFactor);
 	}
 	
 	/**********************************************************************
@@ -105,8 +111,7 @@ public class DinoCactusSmall implements ImageObserver, DinoObstacle {
 	 * @return Current x position.
 	 *********************************************************************/
 	@Override
-	public int getX()
-	{
+	public int getX() {
 		return xPos;
 	}
 	
@@ -146,8 +151,7 @@ public class DinoCactusSmall implements ImageObserver, DinoObstacle {
 	 * so the obstacle can move across the screen.
 	 *********************************************************************/
 	@Override
-	public void resetX()
-	{
+	public void resetX() {
 		xPos = DEFAULTX;
 	}
 	

@@ -10,12 +10,12 @@ import javax.swing.JFrame;
 *@author Tyler Bruder
 *@version Summer 2018
  *********************************************************************/
-public class Main {
+public final class SnakeFrame {
 
 	/******************************************************************
      *Constructor that adds the panels to main frame, and sets border up.
      */
-    public Main() {
+    public SnakeFrame() {
 
         Game gamePanel = new Game();
         JFrame frame = new JFrame();
@@ -37,7 +37,7 @@ public class Main {
      */
     public static void main(final String[] args) {
 
-        new Main();
+        new SnakeFrame();
     }
 
 }

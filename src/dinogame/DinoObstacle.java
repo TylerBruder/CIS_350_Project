@@ -1,4 +1,4 @@
-package dinoGame;
+package dinogame;
 
 import java.awt.Graphics;
 
@@ -11,26 +11,31 @@ import java.awt.Graphics;
  **********************************************************************/
 public interface DinoObstacle {
 	/** Decrements the x position by some value. */
-	public abstract void decX();
+	void decX();
 	
-	/** Returns the current x position of an object. */
-	public abstract int getX();
+	/** Returns the current x position of an object. 
+	 * @return the x value.*/
+	int getX();
 	
-	/** Returns the current y position of an object. */
-	public abstract int getY();
+	/** Returns the current y position of an object. 
+	 * @return the y value.*/
+	int getY();
 	
-	/** Returns the width of an object. */
-	public abstract int getWidth();
+	/** Returns the width of an object. 
+	 * @return the width.*/
+	int getWidth();
 	
-	/** Returns the height of an object. */
-	public abstract int getHeight();
+	/** Returns the height of an object. 
+	 * @return the height.*/
+	int getHeight();
 	
-	/** Paint the object. */
-	public abstract void paint(final Graphics g);
+	/** Paint the object. 
+	 * @param g the graphics passed.*/
+	void paint(Graphics g);
 	
 	/** Resets the x position of an object. */
-	public abstract void resetX();
+	void resetX();
 	
 	/** Increments the speed of an object. */
-	public abstract void incSpeed();
+	void incSpeed();
 }

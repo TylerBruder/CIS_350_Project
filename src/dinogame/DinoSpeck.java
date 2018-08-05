@@ -1,4 +1,4 @@
-package dinoGame;
+package dinogame;
 
 import java.awt.Graphics;
 
@@ -24,28 +24,28 @@ public class DinoSpeck {
 	private int height;
 	
 	/** Upper x limit the speck can appear at. */
-	private final static int UPPERX = 910;
+	private static final int UPPERX = 910;
 	
 	/** Lower x limit the speck can appear at. */
-	private final static int LOWERX = 10;
+	private static final int LOWERX = 10;
 	
 	/** Upper y limit the speck can appear at. */
-	private final static int UPPERY = 550;
+	private static final int UPPERY = 550;
 	
 	/** Lower y limit the speck can appear at. */
-	private final static int LOWERY = 530;
+	private static final int LOWERY = 530;
 	
 	/** Upper width limit the speck can appear at. */
-	private final static int UPPERW = 8;
+	private static final int UPPERW = 8;
 	
 	/** Lower width limit the speck can appear at. */
-	private final static int LOWERW = 4;
+	private static final int LOWERW = 4;
 	
 	/** Upper height limit the speck can appear at. */
-	private final static int UPPERH = 2;
+	private static final int UPPERH = 2;
 	
 	/** Lower height limit the speck can appear at. */
-	private final static int LOWERH = 1;
+	private static final int LOWERH = 1;
 	
 	/** Speed factor for how fast the speck is moving. */
 	private int speedFactor;
@@ -53,8 +53,7 @@ public class DinoSpeck {
 	/**********************************************************************
 	 * Constructor for the DinoSpeck class. Initializes variables.
 	 *********************************************************************/
-	public DinoSpeck()
-	{
+	public DinoSpeck() {
 		speedFactor = 0;
 		xPos = DinoPanel.getNewRand(UPPERX, LOWERX);
 		yPos = DinoPanel.getNewRand(UPPERY, LOWERY);
@@ -69,10 +68,9 @@ public class DinoSpeck {
 	 * @param g The graphics variable for the paint method.
 	 *********************************************************************/
 	public void paint(final Graphics g) {
-		if (xPos < -5)
-		{
+		if (xPos < -5) {
 			xPos = DinoPanel.getNewRand(UPPERX + 60, UPPERX + 30);
-			yPos = DinoPanel.getNewRand(UPPERY, LOWERY);			
+			yPos = DinoPanel.getNewRand(UPPERY, LOWERY);		
 			width = DinoPanel.getNewRand(UPPERW, LOWERW);
 			height = DinoPanel.getNewRand(UPPERH, LOWERH);
 		}
@@ -82,9 +80,8 @@ public class DinoSpeck {
 	/**********************************************************************
 	 * Moves the speck across the panel by a factor of 3 + speedFactor.
 	 *********************************************************************/
-	public void decX()
-	{
-		xPos-=(3 + speedFactor);
+	public void decX() {
+		xPos -= (3 + speedFactor);
 	}
 	
 	/**********************************************************************

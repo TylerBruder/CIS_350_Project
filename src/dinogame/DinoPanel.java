@@ -1,4 +1,4 @@
-package dinoGame;
+package dinogame;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,7 +23,7 @@ import javax.swing.Timer;
  * @author kennemat
  * @version Summer 2018.
  **********************************************************************/
-public class DinoPanel extends JPanel implements KeyListener, ActionListener{
+public class DinoPanel extends JPanel implements KeyListener, ActionListener {
 	
 	/** Default serial ID. */
 	private static final long serialVersionUID = 1L;
@@ -41,10 +41,10 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 	private int switchLegs = -1;
 	
 	/** Max number of unique obstacles in the game. */
-	private final static int MAXOBSTACLES = 4;
+	private static final int MAXOBSTACLES = 4;
 	
 	/** Random number generator. */
-	private static Random rand;
+	private static Random rand = new Random();;
 	
 	/** Array to hold the specks on the ground. */
 	private DinoSpeck[] specks;
@@ -107,9 +107,9 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 		
 		//Initialize specks array.
 		specks = new DinoSpeck[MAXSPECKS];
-		rand = new Random();
-		for (int i = 0; i < MAXSPECKS; i++)
+		for (int i = 0; i < MAXSPECKS; i++) {
 			specks[i] = new DinoSpeck();
+		}
 		
 		//Set up score label.
 		scoreFont = new Font("Arial", 1, 16);
@@ -126,7 +126,7 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 		//Add key listener and set up swing timer.
 		addKeyListener(this);
 		setFocusable(true);
-		timer = new Timer(500/FRAMERATE, this);
+		timer = new Timer(500 / FRAMERATE, this);
 		timer.start();
 	}
 	
@@ -150,27 +150,26 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 			score++;
 			
 			//Speed the game up.
-			if (score % 150 == 0)
-			{
-				for (DinoObstacle obstacle : obstacles)
+			if (score % 150 == 0) {
+				for (DinoObstacle obstacle : obstacles) {
 					obstacle.incSpeed();
+				}
 					
-				for (DinoSpeck speck : specks)
+				for (DinoSpeck speck : specks) {
 					speck.incSpeed();
+				}
 			}
 			scoreLabel.setText(score + "");
 		}
 		
 		//Move the specks along and repaint them.
-		for (DinoSpeck speck : specks)
-		{
+		for (DinoSpeck speck : specks) {
 			speck.decX();
 			speck.paint(g);
 		}
 		
-		//If the method has run through 300 times, then push an obstacle. */
-		if (obstacleCounter > 300)
-		{
+		//If the method has run 300 times, then push an obstacle.
+		if (obstacleCounter > 300) {
 			obstacleCounter = 0;
 			obstacleRandom = rand.nextInt(MAXOBSTACLES);
 			obstacleDrawn = true;
@@ -179,25 +178,27 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 		}
 		
 		//If an obstacle is on the board, then move it and paint it.
-		if (obstacleDrawn)
-		{			
+		if (obstacleDrawn) {			
 			obstacles[obstacleRandom].decX();
 			obstacles[obstacleRandom].paint(g);
 			//Obstacle has moved past the end of the board.
-			if (obstacles[obstacleRandom].getX() < -100)
+			if (obstacles[obstacleRandom].getX() < -100) {
 				obstacleDrawn = false;
+			}
 			
 			//Check for collisions.
-			if (checkCollisions())
-			{
+			if (checkCollisions()) {
 				super.paintComponent(g);
 				player.paint(g, false, true);
 				ground.paint(g, 930, 520);
 				obstacles[obstacleRandom].paint(g);
-				for (DinoSpeck speck : specks)
+				for (DinoSpeck speck : specks) {
 					speck.paint(g);
+				}
+				
 				timer.stop();
-				JOptionPane.showMessageDialog(null, "You lose. \n Score: " + score);
+				JOptionPane.showMessageDialog(
+					null, "You lose. \n Score: " + score);
 				System.exit(0);
 				return;
 			}
@@ -207,8 +208,9 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 		player.paint(g, false, false);
 		
 		switchLegs += 1;
-		if (!obstacleDrawn)
+		if (!obstacleDrawn) {
 			obstacleCounter++;
+		}
 	}
 	
 	/**********************************************************************
@@ -219,22 +221,24 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 	 * 
 	 * @return True if the rectangles intersect, false if not.
 	 *********************************************************************/
-	private boolean checkCollisions()
-	{
+	private boolean checkCollisions() {
 		int playerX = 15;
 		int playerY = player.getY();
 		int playerWidth = player.getWidth();
 		int playerHeight = player.getHeight();
-		Rectangle playerRect = new Rectangle(playerX, playerY, playerWidth, playerHeight);
+		Rectangle playerRect = new Rectangle(
+				playerX, playerY, playerWidth, playerHeight);
 		
 		int obstacleX = obstacles[obstacleRandom].getX();
 		int obstacleY = obstacles[obstacleRandom].getY();
 		int obstacleWidth = obstacles[obstacleRandom].getWidth();
 		int obstacleHeight = obstacles[obstacleRandom].getHeight();
-		Rectangle obstacleRect = new Rectangle(obstacleX, obstacleY, obstacleWidth, obstacleHeight);
+		Rectangle obstacleRect = new Rectangle(
+			obstacleX, obstacleY, obstacleWidth, obstacleHeight);
 		
-		if (playerRect.intersects(obstacleRect))
+		if (playerRect.intersects(obstacleRect)) {
 			return true;
+		}
 		return false;
 	}
 
@@ -245,7 +249,7 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 	 * @param e The action event that occured.
 	 *********************************************************************/
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(final ActionEvent e) {
 		repaint();
 		
 	}
@@ -258,7 +262,6 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 	 *********************************************************************/
 	@Override
 	public void keyTyped(final KeyEvent arg0) {
-		;
 	}
 
 	/**********************************************************************
@@ -292,8 +295,8 @@ public class DinoPanel extends JPanel implements KeyListener, ActionListener{
 	 * @param lowerBound The lower limit for the random number.
 	 * @return The random number.
 	 *********************************************************************/
-	public static int getNewRand(int upperBound, int lowerBound)
-	{
+	public static int getNewRand(
+			final int upperBound, final int lowerBound) {
 		return rand.nextInt(upperBound - lowerBound) + lowerBound;
 	}
 }

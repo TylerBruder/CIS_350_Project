@@ -1,4 +1,4 @@
-package dinoGame;
+package dinogame;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -40,8 +40,9 @@ public class DinoFrame extends JFrame {
 	
 	/**********************************************************************
 	 * Main method. Entry point for the program.
+	 * @param args The command line arguments sent in.
 	 *********************************************************************/
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		new DinoFrame();
 	}
 }
